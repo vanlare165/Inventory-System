@@ -13,9 +13,9 @@ function displayData()
                 $('#table').append(' <tbody><tr><td>'+data[i].product_name+'</td>\
                                               <td>'+data[i].product_quantity+'</td>\
                                               <td>'+data[i].product_desc+'</td>\
-                                              <td><button class="btn btn-primary btn-sm">View</button></td>\
-                                              <td><button class="btn btn-warning btn-sm">Edit</button</td>\
-                                              <td><button class="btn btn-danger btn-sm" onclick="deleteProduct('+data[i].id+')">Delete</button></td>\
+                                              <td><button class="btn btn-primary btn-sm">View</button>\
+                                              <button class="btn btn-warning btn-sm">Edit</button>\
+                                              <button class="btn btn-danger btn-sm" onclick="deleteProduct('+data[i].id+')">Delete</button></td>\
                                       </tr> </tbody>\
                                        ');
             }
@@ -52,16 +52,18 @@ function addProduct()
     });
 }
 function deleteProduct(id)
-    var product_id = JSON.stringify(id);
+ 
 {
     $.ajax({
         url:"includes/deleteProduct.inc.php",
         type:'post',
         data:{
-            id:product_id
+            id:id
         },
         success:function(data,status)
         {
+            $("#table tbody").remove();
+            displayData();
             console.log(status);
             
         },

@@ -1,10 +1,11 @@
 <?php
 
 //covert the json string
-$obj = json_decode($_POST['id'],false);
-
+if(isset($_POST['id']))
+{
+    
     // grabbing data
- $product_id = $obj->product_id;
+ $product_id = $_POST['id'];
 
 
 
@@ -23,3 +24,9 @@ $deleteProduct->deleteProduct($product_id);
 //going back to front end
 header("location: ../index.php?erorr=none");
            
+
+}else
+{
+    echo 'errorka';
+}
+

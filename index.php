@@ -79,9 +79,8 @@
 								</span>
 							</th>
 							<th>Product Description</th>
-							<th>View</th>
-							<th>Edit</th>
-							<th>Delete</th>
+							<th>Action</th>
+							
 
 						</tr>
 					</thead>

@@ -39,8 +39,8 @@ class Product extends Dbh
      }
      protected function deleteItem($product_id)
      {
-        $stmt = $this->connect()->prepare('Delete FROM products WHERE id =?;');
-        $stmt->execute($product_id);
+        $stmt = $this->connect()->prepare('Delete FROM products WHERE id ='.$product_id.';');
+        $stmt->execute();
         
        
      
