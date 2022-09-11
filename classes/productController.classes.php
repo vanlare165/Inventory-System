@@ -27,6 +27,12 @@ class ProductsController extends Product
         $data = $this->getProduct();
         return $data;
     }
+    public function deleteProduct($productId)
+    {
+        
+        $data = $this->deleteItem($productId);
+        return $data;
+    }
     private function emptyInput()
     {
         $result = null;

@@ -13,9 +13,9 @@ function displayData()
                 $('#table').append(' <tbody><tr><td>'+data[i].product_name+'</td>\
                                               <td>'+data[i].product_quantity+'</td>\
                                               <td>'+data[i].product_desc+'</td>\
-                                              <td><a href=""class="btn btn-primary btn-sm">View</a></td>\
-                                              <td><a href=""class="btn btn-warning btn-sm">Edit</a></td>\
-                                              <td><a href=""class="btn btn-danger btn-sm">Delete</a></td>\
+                                              <td><button class="btn btn-primary btn-sm">View</button></td>\
+                                              <td><button class="btn btn-warning btn-sm">Edit</button</td>\
+                                              <td><button class="btn btn-danger btn-sm" onclick="deleteProduct('+data[i].id+')">Delete</button></td>\
                                       </tr> </tbody>\
                                        ');
             }
@@ -49,5 +49,25 @@ function addProduct()
         error: function(e){
             console.log(e.message);
         }
+    });
+}
+function deleteProduct(id)
+    var product_id = JSON.stringify(id);
+{
+    $.ajax({
+        url:"includes/deleteProduct.inc.php",
+        type:'post',
+        data:{
+            id:product_id
+        },
+        success:function(data,status)
+        {
+            console.log(status);
+            
+        },
+        error: function(e){
+            console.log(e.message);
+        }
+
     });
 }

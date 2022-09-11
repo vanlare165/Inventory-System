@@ -37,6 +37,16 @@ class Product extends Dbh
         }
         return $resultCheck;
      }
+     protected function deleteItem($product_id)
+     {
+        $stmt = $this->connect()->prepare('Delete FROM products WHERE id =?;');
+        $stmt->execute($product_id);
+        
+       
+     
+        
+        
+     }
      protected function getProduct()
      {
         
