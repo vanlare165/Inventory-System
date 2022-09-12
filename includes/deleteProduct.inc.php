@@ -19,11 +19,9 @@ if(isset($_POST['id']))
  
 
 //Running error handler and product model
-$deleteProduct->deleteProduct($product_id);
+$messgage = $deleteProduct->deleteProduct($product_id);
+echo $messgage;
 
-//going back to front end
-header("location: ../index.php?erorr=none");
-           
 
 }else
 {

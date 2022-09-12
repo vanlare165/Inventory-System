@@ -27,6 +27,17 @@ class ProductsController extends Product
         $data = $this->getProduct();
         return $data;
     }
+    public function getUpdateDetails($id)
+    {
+        
+        $data = $this->getUpdateProduct($id);
+        return $data;
+    }
+    public function update($id,$product_name,$product_desc,$product_quantity)
+    {
+        $data = $this->UpdateProduct($id,$product_name,$product_desc,$product_quantity);
+        return $data;
+    }
     public function deleteProduct($productId)
     {
         

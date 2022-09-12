@@ -41,7 +41,8 @@ class Product extends Dbh
      {
         $stmt = $this->connect()->prepare('Delete FROM products WHERE id ='.$product_id.';');
         $stmt->execute();
-        
+        $message = 'The product has been deleted!';
+        return $message;
        
      
         
@@ -55,6 +56,25 @@ class Product extends Dbh
         $data = $stmt->fetchAll();
         $jsonData = json_encode($data);
         return $jsonData ;
+      
+     }
+     protected function getUpdateProduct($id)
+     {
+        
+        $stmt = $this->connect()->prepare('SELECT * FROM products WHERE id='.$id.';');
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        $jsonData = json_encode($data);
+        return $jsonData ;
+      
+     }
+     protected function UpdateProduct($id,$product_name,$product_desc,$product_quantity)
+     {
+        
+        $stmt = $this->connect()->prepare('UPDATE products SET product_name =?, product_desc =?, product_quantity =? WHERE id =?;');
+        $stmt->execute(array($product_name,$product_desc,$product_quantity,$id));
+        $message = 'The product has been updated!';
+        return $message;
       
      }
 }

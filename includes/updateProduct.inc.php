@@ -7,6 +7,7 @@ $obj = json_decode($_POST['data'],false);
  $product_name = $obj->product_name;
  $product_quantity = $obj->product_quantity;
  $product_desc = $obj->product_desc;
+ $id = $obj->id;
 
 
 
@@ -15,12 +16,9 @@ $obj = json_decode($_POST['data'],false);
  include "../classes/product.classes.php";
  include "../classes/productController.classes.php";
 
- $addProduct = new ProductsController();
- $addProduct->setItem($product_name, $product_quantity,$product_desc);
+ $updateProduct = new ProductsController();
+ $message = $updateProduct->update($id,$product_name,$product_desc,$product_quantity);
 
-//Running error handler and product model
-$addProduct->addProduct();
-
-//going back to front end
+echo $message;
 
            
