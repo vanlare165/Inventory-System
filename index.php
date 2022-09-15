@@ -37,6 +37,11 @@
 						<label for="product_desc">Product Description</label>
 						<textarea class="form-control" id="product_desc" rows="3"></textarea>
 					</div>
+					<div class="form-group">
+						<label for="image">Product Image</label>
+						<input type="file" class="fileToUpload form-control"/>
+						<input type="text" placeholder="Image Name" id="image_name" class="form-control">
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" onclick="addProduct()">Submit</button>
@@ -91,6 +96,11 @@
 						<label for="updateproduct_desc">Product Description</label>
 						<textarea class="form-control" id="updateproduct_desc" rows="3"></textarea>
 					</div>
+					<div class="form-group">
+						<label for="image">Product Image</label>
+						<input type="file" class="updatefileToUpload form-control"/>
+						<input type="text" placeholder="Image Name" id="updateimage_name" class="form-control">
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" onclick="updateProduct()">Submit</button>
@@ -129,9 +139,8 @@
 					<table class="table table-bordered" id="table">
 					<thead>
 						<tr>
-
+							<th>Product Image</th>
 							<th>Product Name</th>
-
 							<th>Quantity
 								<span class="float-end text-sm" style="cursor: pointer">
 									<i class="fa fa-arrow-up text-muted"></i>

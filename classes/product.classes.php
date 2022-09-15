@@ -2,12 +2,12 @@
 
 class Product extends Dbh
 {
-    protected function setProduct($product_name,  $product_quantity, $product_desc)
+    protected function setProduct($product_name,  $product_quantity, $product_desc, $product_image)
     {
-       $stmt = $this->connect()->prepare('INSERT INTO products (product_name,  product_quantity, product_desc) VALUES (?,?,?);');
+       $stmt = $this->connect()->prepare('INSERT INTO products (product_name,  product_quantity, product_desc, product_image) VALUES (?,?,?,?);');
 
        
-       if(!$stmt->execute(array($product_name,$product_quantity, $product_desc)))
+       if(!$stmt->execute(array($product_name,$product_quantity, $product_desc,$product_image)))
        {
            $stmt = null;
            header("location: ../index.php?erorr=stmtfailed");
@@ -68,11 +68,11 @@ class Product extends Dbh
         return $jsonData ;
       
      }
-     protected function UpdateProduct($id,$product_name,$product_desc,$product_quantity)
+     protected function UpdateProduct($id,$product_name,$product_desc,$product_quantity,$product_image)
      {
         
-        $stmt = $this->connect()->prepare('UPDATE products SET product_name =?, product_desc =?, product_quantity =? WHERE id =?;');
-        $stmt->execute(array($product_name,$product_desc,$product_quantity,$id));
+        $stmt = $this->connect()->prepare('UPDATE products SET product_name =?, product_desc =?, product_quantity =?, product_image=? WHERE id =?;');
+        $stmt->execute(array($product_name,$product_desc,$product_quantity,$product_image,$id));
         $message = 'The product has been updated!';
         return $message;
       

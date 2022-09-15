@@ -10,10 +10,11 @@ function displayData()
         {
             var data = JSON.parse(response);
             for( i in data){
-                $('#table').append(' <tbody><tr><td>'+data[i].product_name+'</td>\
+                $('#table').append(' <tbody><tr><td><img src="images/'+data[i].product_image+'" width="75" height="75" class="img-thumbnail"></td>			\
+                                            <td>'+data[i].product_name+'</td>\
                                               <td>'+data[i].product_quantity+'</td>\
                                               <td>'+data[i].product_desc+'</td>\
-                                              <td><button class="btn btn-primary btn-sm">View</button>\
+                                              <td>\
                                               <button class="btn btn-warning btn-sm"onclick="getUpdateDetails('+data[i].id+')">Edit</button>\
                                               <button class="btn btn-danger btn-sm" onclick="getDeleteId('+data[i].id+')">Delete</button></td>\
                                       </tr> </tbody>\
@@ -21,8 +22,9 @@ function displayData()
             }
            
           
-            
+            console.log(response);
         }
+       
             
     });
 }
@@ -31,17 +33,29 @@ function addProduct()
     var product_name =$('#product_name').val();
     var product_quantity =$('#product_quantity').val();
     var product_desc  =$('#product_desc').val();
+    var image_file = $('.fileToUpload').prop('files')[0];
+    var image_name = $('#image_name').val();
     //create an object literal
     var data = {product_name:product_name,
         product_quantity:product_quantity,
         product_desc:product_desc};
     //convert to json string
         jsonData=JSON.stringify(data);
+        var form_data = new FormData();
+        form_data.append("image",image_file);
+        form_data.append("image_name",image_name);
+        form_data.append("data",jsonData);
+
+
 
     $.ajax({
         url:'includes/addProducts.inc.php',
         type:'post',
-        data:{data:jsonData},
+        dataType:'script',
+        cache:false,
+        contentType:false,
+        processData:false,
+        data:form_data,
         success:function(data,status)
         {
             $("#table tbody").remove();
@@ -61,6 +75,8 @@ function updateProduct()
     var product_name =$('#updateproduct_name').val();
     var product_quantity =$('#updateproduct_quantity').val();
     var product_desc  =$('#updateproduct_desc').val();
+    var image_file = $('.updatefileToUpload').prop('files')[0];
+    var image_name = $('#updateimage_name').val();
     var id  =$('#hiddenId').val();
     //create an object literal
     var data = {product_name:product_name,
@@ -69,11 +85,19 @@ function updateProduct()
         id:id};
     //convert to json string
         jsonData=JSON.stringify(data);
+        var form_data = new FormData();
+        form_data.append("image",image_file);
+        form_data.append("image_name",image_name);
+        form_data.append("data",jsonData);
 
     $.ajax({
         url:'includes/updateProduct.inc.php',
         type:'post',
-        data:{data:jsonData},
+        dataType:'script',
+        cache:false,
+        contentType:false,
+        processData:false,
+        data:form_data,
         success:function(response,status)
         {
             $("#table tbody").remove();

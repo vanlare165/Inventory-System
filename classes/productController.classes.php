@@ -5,12 +5,14 @@ class ProductsController extends Product
     private $product_name;
     private $product_quantity;
     private $product_desc;
+    private $product_image;
 
-    public function setItem( $product_name,  $product_quantity, $product_desc )
+    public function setItem( $product_name,  $product_quantity, $product_desc, $product_image )
     {
         $this->product_name = $product_name;
         $this->product_quantity = $product_quantity;
         $this-> product_desc = $product_desc;
+        $this->product_image = $product_image;
     }
     public function addProduct()
     {
@@ -19,7 +21,7 @@ class ProductsController extends Product
             header("location: ../index.php?erorr=emptyinput");
             exit();
         }
-        $this->setProduct($this->product_name,  $this->product_quantity, $this->product_desc);
+        $this->setProduct($this->product_name,  $this->product_quantity, $this->product_desc, $this->product_image);
     }
     public function index()
     {
@@ -33,9 +35,9 @@ class ProductsController extends Product
         $data = $this->getUpdateProduct($id);
         return $data;
     }
-    public function update($id,$product_name,$product_desc,$product_quantity)
+    public function update($id,$product_name,$product_desc,$product_quantity,$product_image)
     {
-        $data = $this->UpdateProduct($id,$product_name,$product_desc,$product_quantity);
+        $data = $this->UpdateProduct($id,$product_name,$product_desc,$product_quantity,$product_image);
         return $data;
     }
     public function deleteProduct($productId)
