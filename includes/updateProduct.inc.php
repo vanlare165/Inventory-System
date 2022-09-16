@@ -3,18 +3,24 @@
 //covert the json string
 $obj = json_decode($_POST['data'],false);
 
+if(isset($_FILES['image']))
+{
+    $image_name = $_POST['image_name'];
+    $taget_directory = "../images/";
+    $target_file = $taget_directory.basename($_FILES["image"]["name"]);
+    $filetype = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $newfilename = $image_name.".".$filetype;
+    $file_name_with_directory = $taget_directory.$image_name.".".$filetype;
+    
+    
+    //move the image file to images
+    move_uploaded_file($_FILES["image"]["tmp_name"],$file_name_with_directory);
+    
+}else
+{
+    $newfilename = $_POST['image_name'];
+}
 
-
-$image_name = $_POST['image_name'];
-$taget_directory = "../images/";
-$target_file = $taget_directory.basename($_FILES["image"]["name"]);
-$filetype = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-$newfilename = $image_name.".".$filetype;
-$file_name_with_directory = $taget_directory.$image_name.".".$filetype;
-
-
-//move the image file to images
-move_uploaded_file($_FILES["image"]["tmp_name"],$file_name_with_directory);
 
 
 

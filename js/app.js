@@ -134,6 +134,8 @@ function getUpdateDetails(id)
                 $('#updateproduct_name').val(data[i].product_name);
                 $('#updateproduct_desc').val(data[i].product_desc);
                 $('#updateproduct_quantity').val(data[i].product_quantity);
+                $('#updateimage_name').val(data[i].product_image);
+              
             }
        
            

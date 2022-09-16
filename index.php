@@ -99,7 +99,7 @@
 					<div class="form-group">
 						<label for="image">Product Image</label>
 						<input type="file" class="updatefileToUpload form-control"/>
-						<input type="text" placeholder="Image Name" id="updateimage_name" class="form-control">
+						<input type="hidden" placeholder="Image Name" id="updateimage_name" class="form-control">
 					</div>
 				</div>
 				<div class="modal-footer">
