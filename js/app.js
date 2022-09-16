@@ -1,5 +1,6 @@
 $(document).ready(function(){
     displayData();
+    getCategory();
 });
 function displayData()
 {
@@ -30,15 +31,18 @@ function displayData()
 }
 function addProduct()
 {
+    
     var product_name =$('#product_name').val();
     var product_quantity =$('#product_quantity').val();
     var product_desc  =$('#product_desc').val();
     var image_file = $('.fileToUpload').prop('files')[0];
     var image_name = $('#image_name').val();
+    var category = $("#category option:selected").val();
     //create an object literal
     var data = {product_name:product_name,
         product_quantity:product_quantity,
-        product_desc:product_desc};
+        product_desc:product_desc,
+        category:category};
     //convert to json string
         jsonData=JSON.stringify(data);
         var form_data = new FormData();
@@ -198,4 +202,34 @@ function successAlert(message)
         $(this).remove(); 
     });
 }, 4000);
+}
+function getCategory()
+{
+  
+
+    $.ajax({
+        url:'includes/getCategory.inc.php',
+        type:'get',
+        success:function(response)
+        {
+            var data = JSON.parse(response);
+            for( i in data){
+
+             $('#category').append('<option value="'+data[i].id+'">'+data[i].category_name+'</option>');
+              
+            }
+           
+            console.log(response);
+            
+          
+           
+            
+        },
+        error: function(e){
+            console.log(e.message);
+        }
+    });
+
+
+   
 }

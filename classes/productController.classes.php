@@ -6,13 +6,15 @@ class ProductsController extends Product
     private $product_quantity;
     private $product_desc;
     private $product_image;
+    private $category;
 
-    public function setItem( $product_name,  $product_quantity, $product_desc, $product_image )
+    public function setItem( $product_name,  $product_quantity, $product_desc, $product_image,$category )
     {
         $this->product_name = $product_name;
         $this->product_quantity = $product_quantity;
         $this-> product_desc = $product_desc;
         $this->product_image = $product_image;
+        $this->category = $category;
     }
     public function addProduct()
     {
@@ -21,7 +23,7 @@ class ProductsController extends Product
             header("location: ../index.php?erorr=emptyinput");
             exit();
         }
-        $this->setProduct($this->product_name,  $this->product_quantity, $this->product_desc, $this->product_image);
+        $this->setProduct($this->product_name,  $this->product_quantity, $this->product_desc, $this->product_image, $this->category);
     }
     public function index()
     {
@@ -58,6 +60,12 @@ class ProductsController extends Product
             $result = true;
         }
         return $result;
+    }
+    public function fetchCategory()
+    {
+        
+        $data = $this->getCategory();
+        return $data;
     }
 
 }

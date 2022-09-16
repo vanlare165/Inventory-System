@@ -17,6 +17,7 @@ move_uploaded_file($_FILES["image"]["tmp_name"],$file_name_with_directory);
  $product_name = $obj->product_name;
  $product_quantity = $obj->product_quantity;
  $product_desc = $obj->product_desc;
+ $category = $obj->category;
 
 
 
@@ -26,7 +27,7 @@ move_uploaded_file($_FILES["image"]["tmp_name"],$file_name_with_directory);
  include "../classes/productController.classes.php";
 
  $addProduct = new ProductsController();
- $addProduct->setItem($product_name, $product_quantity,$product_desc,$newfilename);
+ $addProduct->setItem($product_name, $product_quantity,$product_desc,$newfilename,$category);
 
 //Running error handler and product model
 $addProduct->addProduct();

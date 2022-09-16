@@ -2,12 +2,12 @@
 
 class Product extends Dbh
 {
-    protected function setProduct($product_name,  $product_quantity, $product_desc, $product_image)
+    protected function setProduct($product_name,  $product_quantity, $product_desc, $product_image,$category)
     {
-       $stmt = $this->connect()->prepare('INSERT INTO products (product_name,  product_quantity, product_desc, product_image) VALUES (?,?,?,?);');
+       $stmt = $this->connect()->prepare('INSERT INTO products (product_name,  product_quantity, product_desc, product_image, category_id) VALUES (?,?,?,?,?);');
 
        
-       if(!$stmt->execute(array($product_name,$product_quantity, $product_desc,$product_image)))
+       if(!$stmt->execute(array($product_name,$product_quantity, $product_desc,$product_image,$category)))
        {
            $stmt = null;
            header("location: ../index.php?erorr=stmtfailed");
@@ -75,6 +75,16 @@ class Product extends Dbh
         $stmt->execute(array($product_name,$product_desc,$product_quantity,$product_image,$id));
         $message = 'The product has been updated!';
         return $message;
+      
+     }
+     protected function getCategory()
+     {
+        
+        $stmt = $this->connect()->prepare('SELECT * FROM category;');
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        $jsonData = json_encode($data);
+        return $jsonData ;
       
      }
 }

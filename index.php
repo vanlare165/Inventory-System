@@ -26,6 +26,13 @@
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
+						<label for="category">Select Product Category</label>
+						<select class="form-select" aria-label="Default select example" id="category">
+							
+							
+						</select>
+					</div>
+					<div class="form-group">
 						<label for="product_name">Product Name</label>
 						<input type="text" class="form-control" id="product_name" placeholder="Enter Product Name">
 					</div>
@@ -39,14 +46,14 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Product Image</label>
-						<input type="file" class="fileToUpload form-control"/>
+						<input type="file" class="fileToUpload form-control" />
 						<input type="text" placeholder="Image Name" id="image_name" class="form-control">
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" onclick="addProduct()">Submit</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					
+
 				</div>
 			</div>
 		</div>
@@ -68,7 +75,7 @@
 					<button type="button" class="btn btn-danger" onclick="deleteProduct()">Delete</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<input type="hidden" id="hiddenId">
-					
+
 				</div>
 			</div>
 		</div>
@@ -98,7 +105,7 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Product Image</label>
-						<input type="file" class="updatefileToUpload form-control"/>
+						<input type="file" class="updatefileToUpload form-control" />
 						<input type="hidden" placeholder="Image Name" id="updateimage_name" class="form-control">
 					</div>
 				</div>
@@ -106,19 +113,19 @@
 					<button type="button" class="btn btn-primary" onclick="updateProduct()">Submit</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<input type="hidden" id="updateHiddenId">
-					
+
 				</div>
 			</div>
 		</div>
 	</div>
 
-	
+
 	<div class="container mt-5">
 
 		<h1 class="text-primary mt-3 mb-4 text-center"><b>Inventory System</b></h1>
 		<div id="alert"></div>
-		
-		
+
+
 
 		<div class="card">
 			<div class="card-header">
@@ -137,22 +144,22 @@
 
 				<div class="table-responsive-sm">
 					<table class="table table-bordered" id="table">
-					<thead>
-						<tr>
-							<th>Product Image</th>
-							<th>Product Name</th>
-							<th>Quantity
-								<span class="float-end text-sm" style="cursor: pointer">
-									<i class="fa fa-arrow-up text-muted"></i>
-									<i class="fa fa-arrow-down"></i>
-								</span>
-							</th>
-							<th>Product Description</th>
-							<th>Action</th>
-							
+						<thead>
+							<tr>
+								<th>Product Image</th>
+								<th>Product Name</th>
+								<th>Quantity
+									<span class="float-end text-sm" style="cursor: pointer">
+										<i class="fa fa-arrow-up text-muted"></i>
+										<i class="fa fa-arrow-down"></i>
+									</span>
+								</th>
+								<th>Product Description</th>
+								<th>Action</th>
 
-						</tr>
-					</thead>
+
+							</tr>
+						</thead>
 
 
 					</table>
